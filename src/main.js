@@ -232,7 +232,7 @@ function showFloorPlanModal(selectedId = null) {
     renderFloorPlanBlocks(selectedId);
 }
 
-// ฟังก์ชันสร้างบล็อกใน Floor Plan (4 แถวตั้ง)
+// ฟังก์ชันสร้างแผนผังโรงทาน 4 แถวแนวตั้ง
 function renderFloorPlanBlocks(selectedId = null) {
     const container = document.getElementById('floorPlanGrid');
     if (!container) return;
@@ -243,12 +243,10 @@ function renderFloorPlanBlocks(selectedId = null) {
         const isSelected = selectedId === restaurant.id;
         
         return `
-            <div class="floor-plan-item ${isSelected ? 'selected' : ''}" onclick="showRestaurantDetail(${restaurant.id})">
+            <div class="floor-plan-item ${isSelected ? 'selected' : ''}">
                 <div class="item-number">${restaurant.id}</div>
-                <div class="floor-plan-content">
-                    <div class="restaurant-name">${restaurant.name}</div>
-                    <div class="restaurant-menu">${restaurant.menu || 'ไม่ระบุเมนู'}</div>
-                </div>
+                <div class="restaurant-menu-text">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
+                <div class="restaurant-name-text">${restaurant.name}</div>
             </div>
         `;
     }).join('');
@@ -279,7 +277,7 @@ function renderGallery() {
                 ${hasPicture ? `<div class="card-image"><img src="${restaurant.picLink}" alt="${restaurant.name}"></div>` : '<div class="no-image">ไม่มีรูปภาพ</div>'}
                 <div class="card-content">
                     <div class="card-name">${restaurant.name}</div>
-                    <div class="card-menu">${restaurant.menu || 'ไม่ระบุเมนู'}</div>
+                    <div class="card-menu">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
                     ${restaurant.postLink ? `<div class="card-link"><a href="${restaurant.postLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fab fa-facebook-f"></i> ดูโพสต์</a></div>` : ''}
                 </div>
             </div>
