@@ -367,24 +367,7 @@ function addSmoothScroll() {
 function setupFloorPlan() {
     const floorPlanBtn = document.getElementById('floorPlanBtn');
     if (floorPlanBtn) {
-        // ปรับปุ่มให้เด่นขึ้นด้วย JS
-        floorPlanBtn.style.background = 'linear-gradient(90deg, #1565c0 60%, #ffb300 100%)';
-        floorPlanBtn.style.color = '#fff';
-        floorPlanBtn.style.fontWeight = 'bold';
-        floorPlanBtn.style.fontSize = '1.1rem';
-        floorPlanBtn.style.border = 'none';
-        floorPlanBtn.style.borderRadius = '8px';
-        floorPlanBtn.style.padding = '8px 18px';
-        floorPlanBtn.style.boxShadow = '0 2px 8px #1565c033';
-        floorPlanBtn.style.cursor = 'pointer';
-        floorPlanBtn.style.display = 'flex';
-        floorPlanBtn.style.alignItems = 'center';
-        floorPlanBtn.style.gap = '8px';
-        floorPlanBtn.style.transition = 'background 0.2s';
-        floorPlanBtn.onmouseover = () => floorPlanBtn.style.background = 'linear-gradient(90deg, #1976d2 60%, #ffc107 100%)';
-        floorPlanBtn.onmouseout = () => floorPlanBtn.style.background = 'linear-gradient(90deg, #1565c0 60%, #ffb300 100%)';
-        
-        // เพิ่ม event listener
+        // เพิ่ม event listener เท่านั้น
         floorPlanBtn.addEventListener('click', showFloorPlan);
     }
 }
@@ -413,7 +396,7 @@ function renderFloorPlanBlocks() {
     if (!floorPlanBlocks) return;
     
     const sorted = [...RESTAURANT_DATA].sort((a, b) => a.id - b.id);
-    const groupSize = 3; // จำนวนต่อแถว
+    const groupSize = 4; // จำนวนต่อแถว
     const rows = [];
     for (let i = 0; i < sorted.length; i += groupSize) {
         rows.push(sorted.slice(i, i + groupSize));
