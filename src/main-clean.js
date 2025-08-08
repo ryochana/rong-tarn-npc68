@@ -42,14 +42,6 @@ function parseCSVLine(line) {
     return result;
 }
 
-// อัพเดตจำนวนโรงทานทั้งหมด
-function updateTotalCount() {
-    const totalCountElement = document.getElementById('totalCount');
-    if (totalCountElement) {
-        totalCountElement.textContent = RESTAURANT_DATA.length;
-    }
-}
-
 // โหลดข้อมูลจาก Google Sheets
 async function loadDataFromGoogleSheets() {
     try {
@@ -98,7 +90,6 @@ async function loadDataFromGoogleSheets() {
         console.log(`✅ โหลดข้อมูลสำเร็จ: ${RESTAURANT_DATA.length} รายการ`);
         
         filteredData = [...RESTAURANT_DATA];
-        updateTotalCount();
         renderGallery();
         
     } catch (error) {
@@ -113,38 +104,27 @@ function createAppStructure() {
     
     const template = `
         <div class="restaurant-container">
-            <header class="header">
-                <div class="header-content">
-                    <div class="logo-section">
-                        <img src="https://i.ibb.co/zVpMg2gV/274832789bf1.jpg" alt="โลโก้โรงเรียน" class="school-logo">
-                    </div>
-                    <div class="title-section">
-                        <h1 class="app-title">รายชื่อโรงทาน</h1>
-                        <p class="subtitle">งานผ้าป่าเพื่อการศึกษาโรงเรียนบ้านโนนผักชี</p>
-                    </div>
-                </div>
-            </header>
-            
-            <div class="stats-section">
-                <div class="total-count">
-                    <h3>จำนวนโรงทานทั้งหมด</h3>
-                    <p id="totalCount">-</p>
-                </div>
-            </div>
+            <h1 class="app-title">
+                <i class="fas fa-utensils"></i>
+                โรงทานขนมไทย | รหัส NPC68
+            </h1>
             
             <div class="controls">
                 <div class="search-container">
                     <div class="search-wrapper">
-                        <span class="search-emoji">🔍</span>
-                        <input type="text" id="searchInput" placeholder="ค้นหาโรงทาน เมนู" class="search-input">
+                        <input type="text" id="searchInput" placeholder="ค้นหาโรงทาน เมนู หรือรหัส..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
                     </div>
-                    <button id="floorPlanBtn" class="floor-plan-btn">
-                        <i class="fas fa-th-large"></i>
-                        ดูผังโรงทาน
-                    </button>
                     <button id="tableViewBtn" class="table-view-btn">
                         <i class="fas fa-table"></i>
                         ดูแบบตาราง
+                    </button>
+                </div>
+                
+                <div class="button-container">
+                    <button id="floorPlanBtn" class="floor-plan-btn">
+                        <i class="fas fa-th-large"></i>
+                        ดูผังโรงทาน
                     </button>
                 </div>
             </div>
@@ -233,7 +213,7 @@ function showFloorPlanModal(selectedId = null) {
     renderFloorPlanBlocks(selectedId);
 }
 
-// ฟังก์ชันสร้างบล็อกใน Floor Plan (4 แถวตั้ง)
+// ฟังก์ชันสร้างบล็อกใน Floor Plan (4 รายการต่อแถว)
 function renderFloorPlanBlocks(selectedId = null) {
     const container = document.getElementById('floorPlanGrid');
     if (!container) return;
@@ -242,13 +222,17 @@ function renderFloorPlanBlocks(selectedId = null) {
     
     const blocks = dataToUse.map(restaurant => {
         const isSelected = selectedId === restaurant.id;
+        const hasPicture = restaurant.picLink && 
+                          restaurant.picLink.trim() !== '' && 
+                          restaurant.picLink.toLowerCase() !== 'n/a';
         
         return `
             <div class="floor-plan-item ${isSelected ? 'selected' : ''}" onclick="showRestaurantDetail(${restaurant.id})">
                 <div class="item-number">${restaurant.id}</div>
+                ${hasPicture ? `<img src="${restaurant.picLink}" alt="${restaurant.name}" class="restaurant-image">` : '<div class="no-image">ไม่มีรูปภาพ</div>'}
                 <div class="floor-plan-content">
-                    <div class="restaurant-name">${restaurant.name}</div>
                     <div class="restaurant-menu">${restaurant.menu || 'ไม่ระบุเมนู'}</div>
+                    <div class="restaurant-name">${restaurant.name}</div>
                 </div>
             </div>
         `;
@@ -293,11 +277,10 @@ function renderGallery() {
 // ฟังก์ชันค้นหา
 function setupSearch() {
     const searchInput = document.getElementById('searchInput');
-    
     if (!searchInput) return;
     
-    const performSearch = () => {
-        const query = searchInput.value.toLowerCase().trim();
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
         
         if (query === '') {
             filteredData = [...RESTAURANT_DATA];
@@ -310,16 +293,6 @@ function setupSearch() {
         }
         
         renderGallery();
-    };
-    
-    // ค้นหาเมื่อพิมพ์
-    searchInput.addEventListener('input', performSearch);
-    
-    // ค้นหาเมื่อกด Enter
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
     });
 }
 
