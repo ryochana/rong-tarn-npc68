@@ -138,19 +138,9 @@ body {
     max-width: 400px;
 }
 
-.search-emoji {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    z-index: 1;
-    cursor: pointer;
-}
-
 .search-input {
     width: 100%;
-    padding: 15px 50px 15px 20px;
+    padding: 15px 20px;
     border: none;
     border-radius: 25px;
     font-size: 1.1rem;
@@ -233,25 +223,26 @@ body {
 
 .card-number {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: -5px;
+    left: -5px;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    z-index: 2;
 }
 
 .card-image {
     margin-bottom: 15px;
     border-radius: 10px;
     overflow: hidden;
-    height: 200px;
+    aspect-ratio: 16/9;
 }
 
 .card-image img {
@@ -266,7 +257,7 @@ body {
 }
 
 .no-image {
-    height: 200px;
+    aspect-ratio: 16/9;
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     display: flex;
     align-items: center;
@@ -281,18 +272,19 @@ body {
 }
 
 .card-name {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: #333;
+    color: #2c3e50;
     margin-bottom: 10px;
     line-height: 1.4;
 }
 
 .card-menu {
-    font-size: 1rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: #34495e;
     margin-bottom: 15px;
     line-height: 1.5;
+    font-weight: 500;
 }
 
 .card-link {
@@ -302,13 +294,13 @@ body {
 .card-link a {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: linear-gradient(135deg, #1877f2, #42a5f5);
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 6px 12px;
+    border-radius: 15px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -762,7 +754,7 @@ body {
     background: #f8f9fa;
     border: 1px solid #e9ecef;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    aspect-ratio: 16/12;
+    aspect-ratio: 16/5;
     position: relative;
 }
 
@@ -877,7 +869,7 @@ body {
     }
     
     .image-container {
-        aspect-ratio: 16/10;
+        aspect-ratio: 16/5;
     }
     
     .restaurant-card {
@@ -933,7 +925,7 @@ body {
     }
     
     .image-container {
-        aspect-ratio: 3/2;
+        aspect-ratio: 16/5;
     }
     
     .restaurant-name {
@@ -972,7 +964,7 @@ body {
     }
     
     .image-container {
-        aspect-ratio: 16/12;
+        aspect-ratio: 16/5;
     }
     
     .title {

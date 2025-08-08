@@ -135,8 +135,7 @@ function createAppStructure() {
             <div class="controls">
                 <div class="search-container">
                     <div class="search-wrapper">
-                        <span class="search-emoji">🔍</span>
-                        <input type="text" id="searchInput" placeholder="ค้นหาโรงทาน เมนู" class="search-input">
+                        <input type="text" id="searchInput" placeholder="🔍 ค้นหาโรงทาน เมนู" class="search-input">
                     </div>
                     <button id="floorPlanBtn" class="floor-plan-btn">
                         <i class="fas fa-th-large"></i>
@@ -281,7 +280,7 @@ function renderGallery() {
                 <div class="card-content">
                     <div class="card-name">${restaurant.name}</div>
                     <div class="card-menu">${restaurant.menu || 'ไม่ระบุเมนู'}</div>
-                    ${restaurant.postLink ? `<div class="card-link"><a href="${restaurant.postLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fab fa-facebook-f"></i> Facebook</a></div>` : ''}
+                    ${restaurant.postLink ? `<div class="card-link"><a href="${restaurant.postLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fab fa-facebook-f"></i> ดูโพสต์</a></div>` : ''}
                 </div>
             </div>
         `;
