@@ -29,7 +29,7 @@ body {
 
 /* Main Container */
 .restaurant-container {
-    max-width: 95%;
+    max-width: 100%; /* ขยายให้เต็มความกว้างจอ */
     margin: 0 auto;
     padding: 0; /* เอา padding ออกเพื่อให้การ์ดใช้พื้นที่เต็ม */
 }
@@ -765,8 +765,8 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .restaurant-container {
-        max-width: 98%;
-        padding: 10px;
+        max-width: 100%; /* ขยายให้เต็มความกว้างจอ */
+        padding: 0; /* เอา padding ออกให้เต็มจอ */
     }
     
     .restaurant-grid {
