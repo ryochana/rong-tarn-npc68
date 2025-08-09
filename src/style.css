@@ -293,16 +293,16 @@ body {
 /* Gallery Container for categorized view */
 .gallery-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px; /* ลด gap */
-    margin: 20px 10px; /* เพิ่ม margin ซ้าย-ขวา */
-    width: calc(100% - 20px); /* ปรับความกว้างให้พอดี */
+    grid-template-columns: 1fr 1fr; /* มือถือ: คาว-หวาน แยก 2 คอลัมน์ */
+    gap: 8px; /* ลด gap สำหรับมือถือ */
+    margin: 10px 5px; /* ลด margin */
+    width: calc(100% - 10px); /* ใช้พื้นที่เกือบเต็ม */
 }
 
 .gallery-section {
     background: white;
     border-radius: 12px;
-    padding: 15px; /* ลด padding */
+    padding: 10px; /* ลด padding สำหรับมือถือ */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     border: 1px solid #e2e8f0;
     width: 100%; /* ใช้ความกว้างเต็ม */
@@ -320,7 +320,7 @@ body {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: 1fr; /* เริ่มต้นด้วย 1 คอลัมน์ */
+    grid-template-columns: 1fr; /* มือถือ: 1 การ์ดต่อคอลัมน์ */
     gap: 15px;
     margin-top: 15px;
     width: 100%; /* ใช้พื้นที่เต็ม */
@@ -954,18 +954,18 @@ body {
     /* Gallery responsive */
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ในมือถือ */
-        gap: 10px;
-        margin: 0 8px; /* เพิ่ม margin ให้ gallery */
-        padding: 0 5px; /* เพิ่ม padding */
+        gap: 8px;
+        margin: 0 5px; /* ลด margin */
+        padding: 0 3px; /* ลด padding */
     }
     
     .gallery-section {
-        padding: 12px; /* เพิ่ม padding */
+        padding: 8px; /* ลด padding มากขึ้น */
     }
     
     .gallery-grid {
         grid-template-columns: 1fr; /* การ์ดเรียงคอลัมน์เดียวในแต่ละส่วน */
-        gap: 10px;
+        gap: 8px;
     }
     
     .item-number {
@@ -1192,7 +1192,7 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 10px 15px; /* เพิ่ม padding ซ้าย-ขวา */
+        padding: 8px 12px; /* ลด padding */
     }
     
     .header {
@@ -1206,40 +1206,41 @@ body {
     }
     
     .restaurant-card {
-        margin: 0 5px; /* เพิ่ม margin ซ้าย-ขวา */
+        margin: 0 2px; /* ลด margin */
+        padding: 10px; /* ลด padding */
     }
     
     /* Gallery responsive สำหรับ tablet */
     .gallery-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin: 0 5px; /* เพิ่ม margin ให้ gallery */
+        grid-template-columns: 1fr 1fr; /* มือถือ: คาว-หวาน 2 คอลัมน์ */
+        gap: 10px;
+        margin: 0 5px; /* ลด margin */
     }
     
     .gallery-section {
-        padding: 15px;
+        padding: 12px; /* ลด padding */
     }
     
     .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: 1fr; /* มือถือ: 1 การ์ดต่อคอลัมน์ */
+        gap: 10px;
     }
 }
 
 /* Desktop และ Tablet ใหญ่ */
 @media (min-width: 769px) {
     .gallery-container {
-        gap: 25px;
+        gap: 20px;
         margin: 20px 15px;
     }
     
     .gallery-section {
-        padding: 25px;
+        padding: 20px;
     }
     
     .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ปรับตามขนาดหน้าจอ */
-        gap: 18px;
+        grid-template-columns: 1fr 1fr; /* คอม: แต่ละส่วน 2 คอลัมน์ = รวม 4 คอลัมน์ */
+        gap: 15px;
     }
     
     .restaurant-grid {
@@ -1272,21 +1273,25 @@ body {
 /* หน้าจอใหญ่มาก */
 @media (min-width: 1200px) {
     .gallery-container {
-        gap: 30px;
+        gap: 25px;
         margin: 20px 20px;
     }
     
+    .gallery-section {
+        padding: 25px;
+    }
+    
     .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* การ์ดใหญ่ขึ้น */
+        grid-template-columns: 1fr 1fr; /* คงเป็น 2 คอลัมน์ต่อส่วน = รวม 4 คอลัมน์ */
         gap: 20px;
     }
     
     .restaurant-card {
-        padding: 20px;
+        padding: 18px;
     }
     
     .card-image, .no-image {
-        height: 150px; /* รูปใหญ่ขึ้นในหน้าจอใหญ่ */
+        height: 140px; /* รูปใหญ่ขึ้นในหน้าจอใหญ่ */
     }
 }
 
@@ -1582,13 +1587,13 @@ body {
     /* Gallery responsive สำหรับมือถือเล็ก */
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ */
-        gap: 8px;
-        margin: 0 10px; /* เพิ่ม margin */
-        padding: 0 8px; /* เพิ่ม padding */
+        gap: 6px;
+        margin: 0 8px; /* เพิ่ม margin */
+        padding: 0 4px; /* ลด padding */
     }
     
     .gallery-section {
-        padding: 10px; /* เพิ่ม padding */
+        padding: 8px; /* ลด padding */
     }
     
     .section-title {
@@ -1597,12 +1602,12 @@ body {
     
     .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 6px;
     }
     
     .restaurant-card {
-        padding: 12px; /* เพิ่ม padding ในการ์ด */
-        margin: 0 2px; /* เพิ่ม margin ในการ์ด */
+        padding: 8px; /* ลด padding ในการ์ด */
+        margin: 0 1px; /* ลด margin ในการ์ด */
     }
     
     .card-name {
