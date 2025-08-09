@@ -46,20 +46,45 @@ body::before {
 
 /* Header Section */
 .header {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .header-content {
+    display: grid;
+    grid-template-columns: auto minmax(280px, 1fr) auto auto;
+    gap: 25px;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.logo-section {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+}
+
+.title-section {
+    text-align: left;
+}
+
+.stats-section-header {
+    text-align: center;
+    min-width: 120px;
+}
+
+.controls-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .logo-section .school-logo {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid rgba(255, 255, 255, 0.3);
@@ -80,7 +105,55 @@ body::before {
 /* Title */
 .app-title {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.3),
+        0 0 20px rgba(255,255,255,0.2);
+    background: linear-gradient(45deg, #fff, #f8f9ff, #e8f4f8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 8s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.1); }
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.logo-section .school-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    50% { transform: scale(1.02); box-shadow: 0 10px 35px rgba(255,255,255,0.15); }
+}
+
+.title-section {
+    text-align: center;
+}
+
+/* Title */
+.app-title {
+    color: white;
+    font-size: 2.8rem;
     font-weight: 800;
     margin-bottom: 8px;
     text-shadow: 
@@ -105,42 +178,108 @@ body::before {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-/* Stats Section */
-.stats-section {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.logo-section .school-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    animation: pulse 6s ease-in-out infinite;
 }
 
-.total-count {
-    text-align: center;
-    margin-bottom: 20px;
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    50% { transform: scale(1.02); box-shadow: 0 10px 35px rgba(255,255,255,0.15); }
 }
 
-.total-count h3 {
+.title-section {
+    text-align: left;
+    min-width: 280px;
+}
+
+/* Title */
+.app-title {
     color: white;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.3),
+        0 0 20px rgba(255,255,255,0.2);
+    background: linear-gradient(45deg, #fff, #f8f9ff, #e8f4f8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 8s ease-in-out infinite;
+    white-space: nowrap;
 }
 
-.total-count p {
+@keyframes titleGlow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.1); }
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Stats Section Header */
+.stats-section-header h3 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    white-space: nowrap;
+}
+
+.stats-section-header p {
     color: #ffd700;
     font-size: 2rem;
     font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.3),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    margin: 0;
 }
 
-.controls-inline {
+/* Controls Section */
+.controls-section .search-wrapper {
+    position: relative;
+    min-width: 250px;
+}
+
+.controls-section .search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+        0 4px 15px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+.controls-section .button-group {
     display: flex;
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Stats Section */
+.stats-section {
+    display: none; /* ซ่อนเพราะย้ายไปใส่ใน header แล้ว */
 }
 
 /* Controls Section */
@@ -217,24 +356,24 @@ body::before {
 }
 
 .floor-plan-btn, .table-view-btn {
-    padding: 15px 30px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 30px;
-    font-size: 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
     font-weight: 700;
     color: white;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 
-        0 8px 25px rgba(0,0,0,0.2),
+        0 4px 15px rgba(0,0,0,0.2),
         inset 0 1px 0 rgba(255,255,255,0.2);
     font-family: 'Noto Sans Thai', sans-serif;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     position: relative;
     overflow: hidden;
-    min-width: 180px;
+    min-width: 130px;
     justify-content: center;
 }
 
@@ -878,50 +1017,54 @@ body::before {
         padding: 12px;
     }
     
+    .header-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .title-section {
+        text-align: center;
+    }
+    
     .app-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .subtitle {
-        font-size: 1rem;
-    }
-    
-    .header {
-        margin-bottom: 20px;
-    }
-    
-    .header-content {
-        flex-direction: column;
-        gap: 12px;
+        font-size: 0.9rem;
     }
     
     .logo-section .school-logo {
-        width: 85px;
-        height: 85px;
+        width: 70px;
+        height: 70px;
     }
     
-    .stats-section {
-        padding: 18px 15px;
+    .stats-section-header h3 {
+        font-size: 0.95rem;
     }
     
-    .controls-inline {
+    .stats-section-header p {
+        font-size: 1.8rem;
+    }
+    
+    .controls-section {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
     
-    .search-wrapper {
-        max-width: 100%;
+    .controls-section .search-wrapper {
+        min-width: 100%;
     }
     
-    .button-group {
+    .controls-section .button-group {
         justify-content: center;
-        width: 100%;
-        gap: 12px;
     }
     
     .floor-plan-btn, .table-view-btn {
-        min-width: 150px;
-        padding: 12px 20px;
+        min-width: 140px;
+        padding: 8px 16px;
     }
     
     /* เปลี่ยนจาก 2 คอลัมน์เป็น 1 คอลัมน์บนมือถือ */

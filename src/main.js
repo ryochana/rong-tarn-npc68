@@ -130,30 +130,27 @@ function createAppStructure() {
                         <h1 class="app-title">รายชื่อโรงทาน</h1>
                         <p class="subtitle">งานผ้าป่าเพื่อการศึกษาโรงเรียนบ้านโนนผักชี</p>
                     </div>
+                    <div class="stats-section-header">
+                        <h3>จำนวนโรงทานทั้งหมด</h3>
+                        <p id="totalCount">-</p>
+                    </div>
+                    <div class="controls-section">
+                        <div class="search-wrapper">
+                            <input type="text" id="searchInput" placeholder="🔍 ค้นหาโรงทาน เมนู" class="search-input">
+                        </div>
+                        <div class="button-group">
+                            <button id="floorPlanBtn" class="floor-plan-btn">
+                                <i class="fas fa-th-large"></i>
+                                ดูผังโรงทาน
+                            </button>
+                            <button id="tableViewBtn" class="table-view-btn">
+                                <i class="fas fa-table"></i>
+                                ดูแบบตาราง
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </header>
-            
-            <div class="stats-section">
-                <div class="total-count">
-                    <h3>จำนวนโรงทานทั้งหมด</h3>
-                    <p id="totalCount">-</p>
-                </div>
-                <div class="controls-inline">
-                    <div class="search-wrapper">
-                        <input type="text" id="searchInput" placeholder="🔍 ค้นหาโรงทาน เมนู" class="search-input">
-                    </div>
-                    <div class="button-group">
-                        <button id="floorPlanBtn" class="floor-plan-btn">
-                            <i class="fas fa-th-large"></i>
-                            ดูผังโรงทาน
-                        </button>
-                        <button id="tableViewBtn" class="table-view-btn">
-                            <i class="fas fa-table"></i>
-                            ดูแบบตาราง
-                        </button>
-                    </div>
-                </div>
-            </div>
             
             <div class="restaurant-grid" id="restaurantGrid">
                 <!-- ข้อมูลโรงทานจะแสดงที่นี่ -->
