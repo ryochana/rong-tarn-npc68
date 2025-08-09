@@ -926,10 +926,12 @@ body {
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ในมือถือ */
         gap: 10px;
+        margin: 0 8px; /* เพิ่ม margin ให้ gallery */
+        padding: 0 5px; /* เพิ่ม padding */
     }
     
     .gallery-section {
-        padding: 10px;
+        padding: 12px; /* เพิ่ม padding */
     }
     
     .gallery-grid {
@@ -1161,7 +1163,7 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 5px;
+        padding: 10px 15px; /* เพิ่ม padding ซ้าย-ขวา */
     }
     
     .header {
@@ -1175,13 +1177,14 @@ body {
     }
     
     .restaurant-card {
-        margin: 0 2px;
+        margin: 0 5px; /* เพิ่ม margin ซ้าย-ขวา */
     }
     
     /* Gallery responsive สำหรับ tablet */
     .gallery-container {
         grid-template-columns: 1fr 1fr;
         gap: 15px;
+        margin: 0 5px; /* เพิ่ม margin ให้ gallery */
     }
     
     .gallery-section {
@@ -1458,6 +1461,30 @@ body {
     }
 }
 
+/* มือถือขนาดกลาง */
+@media (max-width: 600px) {
+    .container {
+        padding: 12px 18px; /* เพิ่ม padding มากขึ้น */
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 0 8px;
+        padding: 0 6px;
+    }
+    
+    .gallery-section {
+        padding: 14px;
+        margin: 0 2px; /* เพิ่ม margin สำหรับ section */
+    }
+    
+    .restaurant-card {
+        padding: 14px;
+        margin: 0 3px;
+    }
+}
+
 /* มือถือขนาดเล็กมาก - ยังคงแสดง 2 คอลัมน์ */
 @media (max-width: 380px) {
     .floor-plan-grid {
@@ -1492,10 +1519,12 @@ body {
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ */
         gap: 8px;
+        margin: 0 10px; /* เพิ่ม margin */
+        padding: 0 8px; /* เพิ่ม padding */
     }
     
     .gallery-section {
-        padding: 8px;
+        padding: 10px; /* เพิ่ม padding */
     }
     
     .section-title {
@@ -1508,7 +1537,8 @@ body {
     }
     
     .restaurant-card {
-        padding: 10px;
+        padding: 12px; /* เพิ่ม padding ในการ์ด */
+        margin: 0 2px; /* เพิ่ม margin ในการ์ด */
     }
     
     .card-name {
