@@ -483,9 +483,9 @@ body {
 
 /* Floor Plan Modal */
 .floor-plan-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* แสดง 2 คอลัมน์เสมอ */
+    gap: 15px;
     padding: 20px;
     height: auto;
     min-height: 500px;
@@ -853,41 +853,42 @@ body {
     }
     
     .floor-plan-grid {
-        gap: 20px;
-        padding: 15px;
+        gap: 10px; /* ลด gap สำหรับมือถือ */
+        padding: 10px;
+        grid-template-columns: 1fr 1fr; /* ยังคงแสดง 2 คอลัมน์ */
     }
     
     .floor-plan-section {
-        padding: 15px;
+        padding: 10px; /* ลด padding สำหรับมือถือ */
     }
     
     .section-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-        margin-bottom: 12px;
+        gap: 4px; /* ลด gap */
+        margin-bottom: 8px; /* ลด margin */
     }
     
     .section-title {
-        font-size: 1.1rem;
+        font-size: 0.9rem; /* ลดขนาดฟอนต์ */
     }
     
     .section-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px; /* ลด gap */
     }
     
     .floor-plan-item {
-        padding: 12px;
+        padding: 8px; /* ลด padding */
     }
     
     .restaurant-menu-text {
-        font-size: 1rem;
-        margin-bottom: 6px;
+        font-size: 0.8rem; /* ลดขนาดฟอนต์ */
+        margin-bottom: 4px;
     }
     
     .restaurant-name-text {
-        font-size: 0.8rem;
+        font-size: 0.7rem; /* ลดขนาดฟอนต์ */
     }
     
     .item-number {
@@ -1393,5 +1394,36 @@ body {
     
     .restaurant-menu {
         font-size: 0.75rem;
+    }
+}
+
+/* มือถือขนาดเล็กมาก - ยังคงแสดง 2 คอลัมน์ */
+@media (max-width: 380px) {
+    .floor-plan-grid {
+        grid-template-columns: 1fr 1fr; /* บังคับให้เป็น 2 คอลัมน์เสมอ */
+        gap: 5px;
+        padding: 8px;
+    }
+    
+    .floor-plan-section {
+        padding: 8px;
+    }
+    
+    .section-title {
+        font-size: 0.8rem;
+    }
+    
+    .restaurant-menu-text {
+        font-size: 0.7rem;
+    }
+    
+    .restaurant-name-text {
+        font-size: 0.6rem;
+    }
+    
+    .item-number {
+        width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
     }
 }
