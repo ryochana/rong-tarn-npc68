@@ -294,16 +294,20 @@ body {
 .gallery-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 15px; /* ลด gap */
+    margin: 20px 10px; /* เพิ่ม margin ซ้าย-ขวา */
+    width: calc(100% - 20px); /* ปรับความกว้างให้พอดี */
 }
 
 .gallery-section {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px; /* ลด padding */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     border: 1px solid #e2e8f0;
+    width: 100%; /* ใช้ความกว้างเต็ม */
+    min-width: 0; /* ให้สามารถหดได้ */
+    overflow: hidden; /* ป้องกันเนื้อหาล้น */
 }
 
 .gallery-section.savory-section {
@@ -316,21 +320,25 @@ body {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: 1fr; /* เริ่มต้นด้วย 1 คอลัมน์ */
     gap: 15px;
     margin-top: 15px;
+    width: 100%; /* ใช้พื้นที่เต็ม */
 }
 
 .restaurant-card {
     background: white;
     border-radius: 16px;
-    padding: 16px;
+    padding: 12px; /* ลด padding */
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(0,0,0,0.04);
+    width: 100%; /* ใช้ความกว้างเต็ม */
+    min-width: 0; /* ให้สามารถหดได้ */
+    box-sizing: border-box; /* รวม padding ในการคำนวณขนาด */
 }
 
 .restaurant-card:hover {
@@ -360,8 +368,29 @@ body {
     margin-bottom: 8px;
     border-radius: 12px;
     overflow: hidden;
-    aspect-ratio: 16/9;
+    width: 100%;
+    height: 120px; /* fix ความสูงคงที่ */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ครอบรูปให้พอดี */
+    object-position: center;
+}
+
+.no-image {
+    width: 100%;
+    height: 120px; /* fix ความสูงคงที่เหมือนรูปภาพ */
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
 }
 
 .card-image img {
@@ -1199,6 +1228,20 @@ body {
 
 /* Desktop และ Tablet ใหญ่ */
 @media (min-width: 769px) {
+    .gallery-container {
+        gap: 25px;
+        margin: 20px 15px;
+    }
+    
+    .gallery-section {
+        padding: 25px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ปรับตามขนาดหน้าจอ */
+        gap: 18px;
+    }
+    
     .restaurant-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 12px;
@@ -1209,7 +1252,7 @@ body {
     }
     
     .restaurant-card {
-        padding: 12px;
+        padding: 16px;
     }
     
     .restaurant-name {
@@ -1223,6 +1266,27 @@ body {
     
     .menu-text {
         font-size: 0.9rem;
+    }
+}
+
+/* หน้าจอใหญ่มาก */
+@media (min-width: 1200px) {
+    .gallery-container {
+        gap: 30px;
+        margin: 20px 20px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* การ์ดใหญ่ขึ้น */
+        gap: 20px;
+    }
+    
+    .restaurant-card {
+        padding: 20px;
+    }
+    
+    .card-image, .no-image {
+        height: 150px; /* รูปใหญ่ขึ้นในหน้าจอใหญ่ */
     }
 }
 

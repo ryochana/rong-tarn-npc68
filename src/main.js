@@ -326,7 +326,7 @@ function renderGallery() {
             <div class="gallery-section ${sectionClass}">
                 <div class="section-header">
                     <h3 class="section-title">${title}</h3>
-                    <span class="section-count">${restaurants.length} ร้าน</span>
+                    <span class="section-count">${restaurants.length} แห่ง</span>
                 </div>
                 <div class="gallery-grid">
                     ${cards}
