@@ -42,6 +42,23 @@ function parseCSVLine(line) {
     return result;
 }
 
+// ฟังก์ชันจำแนกประเภทอาหาร
+function categorizeFood(menu) {
+    if (!menu) return 'คาว';
+    
+    const menuLower = menu.toLowerCase();
+    const sweetKeywords = [
+        'ขนม', 'เค้ก', 'ไอศกรีม', 'ไอติม', 'เจลาโต้', 'โซดา', 'น้ำหวาน', 
+        'ชา', 'กาแฟ', 'เครื่องดื่ม', 'นม', 'โกโก้', 'ช็อกโกแลต',
+        'คุกกี้', 'มาการอง', 'บราวนี่', 'ทาร์ต', 'พุดดิ้ง', 'มูส',
+        'โดนัท', 'ครัวซองต์', 'ขนมปัง', 'เบเกอรี่', 'ฟัดจ์',
+        'หวาน', 'ของหวาน', 'ครีม', 'ยาง', 'ลูกกอล์ฟ', 'ทองหยิบ',
+        'ฝอยทอง', 'ทองหยอด', 'บัวลอย', 'ข้าวต้มมัด', 'ข้าวหลาม'
+    ];
+    
+    return sweetKeywords.some(keyword => menuLower.includes(keyword)) ? 'หวาน' : 'คาว';
+}
+
 // อัพเดตจำนวนโรงทานทั้งหมด
 function updateTotalCount() {
     const totalCountElement = document.getElementById('totalCount');
@@ -130,21 +147,20 @@ function createAppStructure() {
                     <h3>จำนวนโรงทานทั้งหมด</h3>
                     <p id="totalCount">-</p>
                 </div>
-            </div>
-            
-            <div class="controls">
-                <div class="search-container">
+                <div class="controls-inline">
                     <div class="search-wrapper">
                         <input type="text" id="searchInput" placeholder="🔍 ค้นหาโรงทาน เมนู" class="search-input">
                     </div>
-                    <button id="floorPlanBtn" class="floor-plan-btn">
-                        <i class="fas fa-th-large"></i>
-                        ดูผังโรงทาน
-                    </button>
-                    <button id="tableViewBtn" class="table-view-btn">
-                        <i class="fas fa-table"></i>
-                        ดูแบบตาราง
-                    </button>
+                    <div class="button-group">
+                        <button id="floorPlanBtn" class="floor-plan-btn">
+                            <i class="fas fa-th-large"></i>
+                            ดูผังโรงทาน
+                        </button>
+                        <button id="tableViewBtn" class="table-view-btn">
+                            <i class="fas fa-table"></i>
+                            ดูแบบตาราง
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -232,26 +248,49 @@ function showFloorPlanModal(selectedId = null) {
     renderFloorPlanBlocks(selectedId);
 }
 
-// ฟังก์ชันสร้างแผนผังโรงทาน 4 แถวแนวตั้ง
+// ฟังก์ชันสร้างแผนผังโรงทาน แยกเป็นหมวดของคาวและของหวาน
 function renderFloorPlanBlocks(selectedId = null) {
     const container = document.getElementById('floorPlanGrid');
     if (!container) return;
     
     const dataToUse = filteredData.length > 0 ? filteredData : RESTAURANT_DATA;
     
-    const blocks = dataToUse.map(restaurant => {
-        const isSelected = selectedId === restaurant.id;
+    // จำแนกโรงทานตามประเภท
+    const savoryRestaurants = dataToUse.filter(r => categorizeFood(r.menu) === 'คาว');
+    const sweetRestaurants = dataToUse.filter(r => categorizeFood(r.menu) === 'หวาน');
+    
+    // สร้าง HTML สำหรับแต่ละหมวด
+    const createSection = (restaurants, title, sectionClass) => {
+        if (restaurants.length === 0) return '';
+        
+        const items = restaurants.map(restaurant => {
+            const isSelected = selectedId === restaurant.id;
+            return `
+                <div class="floor-plan-item ${isSelected ? 'selected' : ''}">
+                    <div class="item-number">${restaurant.id}</div>
+                    <div class="restaurant-menu-text">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
+                    <div class="restaurant-name-text">${restaurant.name}</div>
+                </div>
+            `;
+        }).join('');
         
         return `
-            <div class="floor-plan-item ${isSelected ? 'selected' : ''}">
-                <div class="item-number">${restaurant.id}</div>
-                <div class="restaurant-menu-text">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
-                <div class="restaurant-name-text">${restaurant.name}</div>
+            <div class="floor-plan-section ${sectionClass}">
+                <div class="section-header">
+                    <h3 class="section-title">${title}</h3>
+                    <span class="section-count">${restaurants.length} แห่ง</span>
+                </div>
+                <div class="section-grid">
+                    ${items}
+                </div>
             </div>
         `;
-    }).join('');
+    };
     
-    container.innerHTML = blocks;
+    const savorySection = createSection(savoryRestaurants, '🍛 โรงทานของคาว', 'savory-section');
+    const sweetSection = createSection(sweetRestaurants, '🍰 โรงทานของหวาน', 'sweet-section');
+    
+    container.innerHTML = savorySection + sweetSection;
 }
 
 // ฟังก์ชันแสดงผล Gallery
