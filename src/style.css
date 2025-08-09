@@ -295,9 +295,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr; /* มือถือ: คาว-หวาน แยก 2 คอลัมน์ */
     gap: 8px; /* ลด gap สำหรับมือถือ */
-    margin: 10px auto; /* center เหมือน container บน */
-    max-width: 95%; /* เท่ากับ restaurant-container */
-    width: 100%; /* ใช้ความกว้างเต็ม */
+    margin: 10px 0; /* ใช้ margin บน-ล่าง เท่านั้น */
+    width: 100%; /* ใช้ความกว้างเต็มของ parent */
 }
 
 .gallery-section {
@@ -956,10 +955,9 @@ body {
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ในมือถือ */
         gap: 8px;
-        margin: 0 auto; /* center เหมือน container บน */
-        max-width: 95%; /* เท่ากับ restaurant-container */
+        margin: 0; /* ไม่มี margin */
         padding: 0; /* ไม่มี padding */
-        width: 100%; /* ความกว้างเต็ม */
+        width: 100%; /* ความกว้างเต็มของ parent */
     }
     
     .gallery-section {
@@ -1217,9 +1215,8 @@ body {
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* มือถือ: คาว-หวาน 2 คอลัมน์ */
         gap: 10px;
-        margin: 0 auto; /* center เหมือน container บน */
-        max-width: 95%; /* เท่ากับ restaurant-container */
-        width: 100%; /* ความกว้างเต็ม */
+        margin: 0; /* ไม่มี margin */
+        width: 100%; /* ความกว้างเต็มของ parent */
     }
     
     .gallery-section {
@@ -1236,9 +1233,8 @@ body {
 @media (min-width: 769px) {
     .gallery-container {
         gap: 20px;
-        margin: 20px auto; /* center เหมือน container บน */
-        max-width: 95%; /* เท่ากับ restaurant-container */
-        width: 100%; /* ความกว้างเต็ม */
+        margin: 20px 0; /* ใช้ margin บน-ล่าง เท่านั้น */
+        width: 100%; /* ความกว้างเต็มของ parent */
     }
     
     .gallery-section {
@@ -1281,9 +1277,8 @@ body {
 @media (min-width: 1200px) {
     .gallery-container {
         gap: 25px;
-        margin: 20px auto; /* center เหมือน container บน */
-        max-width: 95%; /* เท่ากับ restaurant-container */
-        width: 100%; /* ความกว้างเต็ม */
+        margin: 20px 0; /* ใช้ margin บน-ล่าง เท่านั้น */
+        width: 100%; /* ความกว้างเต็มของ parent */
     }
     
     .gallery-section {
@@ -1597,10 +1592,9 @@ body {
     .gallery-container {
         grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ */
         gap: 6px;
-        margin: 0 auto; /* center เหมือน container บน */
-        max-width: 95%; /* เท่ากับ restaurant-container */
+        margin: 0; /* ไม่มี margin */
         padding: 0; /* ไม่มี padding */
-        width: 100%; /* ความกว้างเต็ม */
+        width: 100%; /* ความกว้างเต็มของ parent */
     }
     
     .gallery-section {
