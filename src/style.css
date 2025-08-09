@@ -782,7 +782,7 @@ body {
 @media (max-width: 768px) {
     .restaurant-container {
         max-width: 100%;
-        padding: 10px 5px;
+        padding: 0; /* เอา padding ออกให้เต็มจอ */
     }
     
     .restaurant-grid {
