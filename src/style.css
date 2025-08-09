@@ -31,7 +31,7 @@ body {
 .restaurant-container {
     max-width: 95%;
     margin: 0 auto;
-    padding: 15px;
+    padding: 0; /* เอา padding ออกเพื่อให้การ์ดใช้พื้นที่เต็ม */
 }
 
 /* Header */
@@ -39,8 +39,8 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 8px;
-    margin-bottom: 8px;
+    padding: 8px 15px; /* เพิ่ม padding ซ้าย-ขวา */
+    margin: 15px 15px 8px 15px; /* เพิ่ม margin รอบๆ */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -88,7 +88,7 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 20px;
-    margin-bottom: 12px;
+    margin: 0 15px 12px 15px; /* เพิ่ม margin ซ้าย-ขวา */
     text-align: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -284,9 +284,9 @@ body {
 
 /* Restaurant Grid - Container หลัก */
 .restaurant-grid {
-    margin: 20px -15px; /* negative margin เพื่อขยายให้เท่าแถบบน */
-    width: calc(100% + 30px); /* ขยายความกว้างเพื่อชดเชย padding */
-    padding: 0 15px; /* เพิ่ม padding กลับมา */
+    margin: 20px 0; /* ใช้ margin บน-ล่าง เท่านั้น */
+    width: 100%; /* ใช้ความกว้างเต็ม */
+    padding: 0; /* ไม่มี padding */
 }
 
 /* Gallery Container for categorized view */
@@ -296,7 +296,7 @@ body {
     gap: 8px;
     margin: 0;
     width: 100%;
-    padding: 0;
+    padding: 0 15px; /* เพิ่ม padding เริ่มต้น */
 }
 
 .gallery-section {
@@ -1199,15 +1199,16 @@ body {
     }
     
     .restaurant-grid {
-        margin: 0 -12px; /* negative margin สำหรับมือถือ */
-        width: calc(100% + 24px);
-        padding: 0 12px;
+        margin: 0; /* ไม่มี margin ในมือถือ */
+        width: 100%;
+        padding: 0;
     }
     
     /* Gallery responsive สำหรับ tablet */
     .gallery-container {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
+        padding: 0 15px; /* เพิ่ม padding เฉพาะ gallery */
     }
     
     .gallery-section {
@@ -1230,8 +1231,17 @@ body {
         padding: 0 15px; /* เพิ่ม padding กลับมา */
     }
     
+/* Desktop และ Tablet ใหญ่ */
+@media (min-width: 769px) {
+    .restaurant-grid {
+        margin: 20px 0;
+        width: 100%;
+        padding: 0;
+    }
+    
     .gallery-container {
         gap: 20px;
+        padding: 0 15px; /* เพิ่ม padding เฉพาะ gallery */
     }
     
     .gallery-section {
@@ -1242,6 +1252,7 @@ body {
         grid-template-columns: 1fr 1fr; /* คอม: แต่ละส่วน 2 คอลัมน์ = รวม 4 คอลัมน์ */
         gap: 15px;
     }
+}
     
     .image-container {
         aspect-ratio: 16/5;
