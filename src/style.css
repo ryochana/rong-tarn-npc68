@@ -292,14 +292,12 @@ body {
 /* Gallery Container for categorized view */
 .gallery-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* มือถือ: คาว-หวาน แยก 2 คอลัมน์ */
-    gap: 15px; /* ใช้ gap เท่ากับผังโรงทาน */
-    padding: 20px; /* ใช้ padding เท่ากับผังโรงทาน */
-    margin: 20px 0; /* ใช้ margin เท่ากับผังโรงทาน */
+    grid-template-columns: 1fr; /* แสดงแค่คอลัมน์เดียว เต็มความกว้าง */
+    gap: 15px;
+    padding: 0; /* เอา padding ออก */
+    margin: 0; /* เอา margin ออก */
     width: 100%;
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0); /* เพิ่ม background เหมือนผังโรงทาน */
-    border-radius: 16px; /* เพิ่ม border-radius เหมือนผังโรงทาน */
-    border: 2px solid #cbd5e1; /* เพิ่ม border เหมือนผังโรงทาน */
+    /* เอา background และ border ออก */
 }
 
 .gallery-section {
