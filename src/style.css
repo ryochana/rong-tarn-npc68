@@ -290,6 +290,37 @@ body {
     margin-top: 20px;
 }
 
+/* Gallery Container for categorized view */
+.gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.gallery-section.savory-section {
+    border-left: 4px solid #ff6b6b;
+}
+
+.gallery-section.sweet-section {
+    border-left: 4px solid #4ecdc4;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
 .restaurant-card {
     background: white;
     border-radius: 16px;
@@ -891,6 +922,21 @@ body {
         font-size: 0.7rem; /* ลดขนาดฟอนต์ */
     }
     
+    /* Gallery responsive */
+    .gallery-container {
+        grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ในมือถือ */
+        gap: 10px;
+    }
+    
+    .gallery-section {
+        padding: 10px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr; /* การ์ดเรียงคอลัมน์เดียวในแต่ละส่วน */
+        gap: 10px;
+    }
+    
     .item-number {
         width: 20px;
         height: 20px;
@@ -1130,6 +1176,21 @@ body {
     
     .restaurant-card {
         margin: 0 2px;
+    }
+    
+    /* Gallery responsive สำหรับ tablet */
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .gallery-section {
+        padding: 15px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 }
 
@@ -1425,5 +1486,36 @@ body {
         width: 16px;
         height: 16px;
         font-size: 0.6rem;
+    }
+    
+    /* Gallery responsive สำหรับมือถือเล็ก */
+    .gallery-container {
+        grid-template-columns: 1fr 1fr; /* ยังคง 2 คอลัมน์ */
+        gap: 8px;
+    }
+    
+    .gallery-section {
+        padding: 8px;
+    }
+    
+    .section-title {
+        font-size: 0.8rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .restaurant-card {
+        padding: 10px;
+    }
+    
+    .card-name {
+        font-size: 0.8rem;
+    }
+    
+    .card-menu {
+        font-size: 0.7rem;
     }
 }

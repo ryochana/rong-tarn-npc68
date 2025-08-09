@@ -296,25 +296,54 @@ function renderGallery() {
         return;
     }
     
-    const cards = dataToUse.map(restaurant => {
-        const hasPicture = restaurant.picLink && 
-                          restaurant.picLink.trim() !== '' && 
-                          restaurant.picLink.toLowerCase() !== 'n/a';
+    // จำแนกโรงทานตามประเภท
+    const savoryRestaurants = dataToUse.filter(r => categorizeFood(r.menu, r.id) === 'คาว');
+    const sweetRestaurants = dataToUse.filter(r => categorizeFood(r.menu, r.id) === 'หวาน');
+    
+    // สร้าง HTML สำหรับแต่ละหมวด
+    const createGallerySection = (restaurants, title, sectionClass) => {
+        if (restaurants.length === 0) return '';
+        
+        const cards = restaurants.map(restaurant => {
+            const hasPicture = restaurant.picLink && 
+                              restaurant.picLink.trim() !== '' && 
+                              restaurant.picLink.toLowerCase() !== 'n/a';
+            
+            return `
+                <div class="restaurant-card" onclick="showRestaurantDetail(${restaurant.id})">
+                    <div class="card-number">${restaurant.id}</div>
+                    ${hasPicture ? `<div class="card-image"><img src="${restaurant.picLink}" alt="${restaurant.name}"></div>` : '<div class="no-image">ไม่มีรูปภาพ</div>'}
+                    <div class="card-content">
+                        <div class="card-name">${restaurant.name}</div>
+                        <div class="card-menu">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
+                        ${restaurant.postLink ? `<div class="card-link"><a href="${restaurant.postLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fab fa-facebook-f"></i> ดูโพสต์</a></div>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
         
         return `
-            <div class="restaurant-card" onclick="showRestaurantDetail(${restaurant.id})">
-                <div class="card-number">${restaurant.id}</div>
-                ${hasPicture ? `<div class="card-image"><img src="${restaurant.picLink}" alt="${restaurant.name}"></div>` : '<div class="no-image">ไม่มีรูปภาพ</div>'}
-                <div class="card-content">
-                    <div class="card-name">${restaurant.name}</div>
-                    <div class="card-menu">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
-                    ${restaurant.postLink ? `<div class="card-link"><a href="${restaurant.postLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fab fa-facebook-f"></i> ดูโพสต์</a></div>` : ''}
+            <div class="gallery-section ${sectionClass}">
+                <div class="section-header">
+                    <h3 class="section-title">${title}</h3>
+                    <span class="section-count">${restaurants.length} ร้าน</span>
+                </div>
+                <div class="gallery-grid">
+                    ${cards}
                 </div>
             </div>
         `;
-    }).join('');
+    };
     
-    container.innerHTML = cards;
+    const savorySection = createGallerySection(savoryRestaurants, '🍛 โรงทานของคาว (โซนสนามบาส)', 'savory-section');
+    const sweetSection = createGallerySection(sweetRestaurants, '🍰 โรงทานของหวาน (หน้าอาคารสีเขียว)', 'sweet-section');
+    
+    container.innerHTML = `
+        <div class="gallery-container">
+            ${savorySection}
+            ${sweetSection}
+        </div>
+    `;
 }
 
 // ฟังก์ชันค้นหา
