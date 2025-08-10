@@ -565,8 +565,10 @@ body::before {
     margin-bottom: 15px;
     border-radius: 12px;
     overflow: hidden;
-    height: 180px;
+    width: 100%;
+    aspect-ratio: 16 / 8;
     position: relative;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
 }
 
 .card-image img {
@@ -574,6 +576,7 @@ body::before {
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
 }
 
 .card-image img:hover {
@@ -581,7 +584,8 @@ body::before {
 }
 
 .no-image {
-    height: 180px;
+    width: 100%;
+    aspect-ratio: 16 / 8;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
     display: flex;
     align-items: center;
@@ -1120,7 +1124,7 @@ body::before {
     }
     
     .card-image {
-        height: 140px;
+        aspect-ratio: 16 / 8;
     }
     
     .restaurant-card {

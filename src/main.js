@@ -306,10 +306,15 @@ function renderGallery() {
                               restaurant.picLink.trim() !== '' && 
                               restaurant.picLink.toLowerCase() !== 'n/a';
             
+            // สร้าง placeholder image URL ถ้าไม่มีรูป
+            const imageUrl = hasPicture ? restaurant.picLink : `https://via.placeholder.com/400x200/e9ecef/6c757d?text=${encodeURIComponent('โรงทาน ' + restaurant.id)}`;
+            
             return `
                 <div class="restaurant-card" onclick="showRestaurantDetail(${restaurant.id})">
                     <div class="card-number">${restaurant.id}</div>
-                    ${hasPicture ? `<div class="card-image"><img src="${restaurant.picLink}" alt="${restaurant.name}"></div>` : '<div class="no-image">ไม่มีรูปภาพ</div>'}
+                    <div class="card-image">
+                        <img src="${imageUrl}" alt="${restaurant.name}" onerror="this.src='https://via.placeholder.com/400x200/e9ecef/6c757d?text=${encodeURIComponent('โรงทาน ' + restaurant.id)}'">
+                    </div>
                     <div class="card-content">
                         <div class="card-name">${restaurant.name}</div>
                         <div class="card-menu">โรงทาน${restaurant.menu || 'ไม่ระบุเมนู'}</div>
