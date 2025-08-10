@@ -1067,28 +1067,46 @@ body::before {
         padding: 8px 16px;
     }
     
-    /* เปลี่ยนจาก 2 คอลัมน์เป็น 1 คอลัมน์บนมือถือ */
+    /* คงเป็น 2 คอลัมน์บนมือถือ */
     .gallery-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
     
     .gallery-section {
-        padding: 15px;
+        padding: 12px;
+    }
+    
+    .section-header {
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .section-count {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    .gallery-grid {
+        gap: 12px;
     }
     
     .section-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 8px;
     }
     
     .floor-plan-item {
-        min-height: 160px;
-        padding: 10px;
+        min-height: 140px;
+        padding: 8px;
     }
     
     .restaurant-image {
-        height: 90px;
+        height: 80px;
     }
     
     .modal-content {
@@ -1102,11 +1120,28 @@ body::before {
     }
     
     .card-image {
-        height: 160px;
+        height: 140px;
     }
     
     .restaurant-card {
-        padding: 15px;
+        padding: 12px;
+    }
+    
+    .card-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .card-name {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .card-menu {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+        margin-bottom: 12px;
     }
 }
 
